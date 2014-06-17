@@ -52,3 +52,7 @@ release: clean
 sdist: clean
 	python setup.py sdist
 	ls -l dist
+
+deploy: sdist
+	scp -r dist/* eihort:/srv/{{ cookiecutter.repo_name }}
+	rsync -avt --delete {{ cookiecutter.repo_name }}/static/ eihort:/srv/{{ cookiecutter.repo_name }}/static
