@@ -1,7 +1,7 @@
 from flask import Flask
 from {{cookiecutter.repo_name}} import {{cookiecutter.ext_name|title}}
 
-app = Flask(app)
+app = Flask(__name__)
 ext = {{cookiecutter.ext_name|title}}(app)
 
 app.debug = True
