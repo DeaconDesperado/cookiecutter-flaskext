@@ -47,12 +47,12 @@ docs:
 	open docs/_build/html/index.html
 
 release: clean
-	python setup.py sdist upload
+	python setup.py sdist 
+	twine upload dist/*
 
 sdist: clean
 	python setup.py sdist
 	ls -l dist
 
-deploy: sdist
-	scp -r dist/* eihort:/srv/{{ cookiecutter.repo_name }}
-	rsync -avt --delete {{ cookiecutter.repo_name }}/static/ eihort:/srv/{{ cookiecutter.repo_name }}/static
+run: 
+	PYTHONPATH=./ python {{cookiecutter.repo_name}}/app.py
